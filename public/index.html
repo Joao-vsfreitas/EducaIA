@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EducaIA — assistente inteligente de aprendizagem." />
+  <title>EducaIA | Aprenda com inteligência</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#">
+        <span class="brand-mark">e<span>✦</span></span>
+        <span>educa<span class="brand-light">IA</span><small>APRENDIZAGEM INTELIGENTE</small></span>
+      </a>
+      <div class="side-label">ESPAÇO DE APRENDIZAGEM</div>
+      <button class="nav-item active" type="button"><span>✧</span> Tutor inteligente</button>
+      <div class="sidebar-note">
+        <div class="note-icon">✦</div>
+        <strong>Aprender é uma jornada.</strong>
+        <p>Use a inteligência artificial como apoio para explorar ideias, praticar e desenvolver seu conhecimento.</p>
+      </div>
+      <div class="sidebar-bottom">
+        <span class="status-dot"></span>
+        <span id="connection-label">Verificando configuração...</span>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="mobile-brand">✦ EducaIA</div>
+        <div class="topbar-right"><span class="top-pill"><span class="live-dot"></span> Protótipo acadêmico</span></div>
+      </header>
+
+      <section class="welcome">
+        <div class="eyebrow"><span>✦</span> SEU ESPAÇO DE ESTUDOS</div>
+        <h1>Conhecimento que se<br><span>adapta a você.</span></h1>
+        <p class="welcome-copy">Explore um assunto, tire dúvidas e pratique. Seu tutor inteligente está pronto para ajudar.</p>
+      </section>
+
+      <section class="workspace">
+        <div class="form-card">
+          <div class="card-heading">
+            <div class="heading-icon">✧</div>
+            <div><h2>O que vamos aprender?</h2><p>Personalize sua experiência de aprendizagem.</p></div>
+          </div>
+
+          <form id="study-form">
+            <label for="subject">ASSUNTO DE ESTUDO</label>
+            <input id="subject" maxlength="180" required placeholder="Ex.: Banco de dados relacionais" />
+            <div class="label-row"><label>SEU NÍVEL DE CONHECIMENTO</label><span class="muted">Escolha uma opção</span></div>
+            <div class="level-options">
+              <label class="level-option"><input type="radio" name="level" value="iniciante" checked><span class="level-box"><b>◉</b><strong>Iniciante</strong><small>Estou começando</small></span></label>
+              <label class="level-option"><input type="radio" name="level" value="intermediário"><span class="level-box"><b>◈</b><strong>Intermediário</strong><small>Já tenho noções</small></span></label>
+              <label class="level-option"><input type="radio" name="level" value="avançado"><span class="level-box"><b>✧</b><strong>Avançado</strong><small>Quero aprofundar</small></span></label>
+            </div>
+            <div class="action-label">COMO POSSO AJUDAR?</div>
+            <div class="action-grid">
+              <button class="action-card selected" type="button" data-action="explain">
+                <span class="action-icon purple">✦</span><strong>Me ensine</strong><small>Receba uma explicação personalizada</small>
+              </button>
+              <button class="action-card" type="button" data-action="quiz">
+                <span class="action-icon orange">▤</span><strong>Quero praticar</strong><small>Gere uma questão para testar seu conhecimento</small>
+              </button>
+            </div>
+            <input type="hidden" id="action" value="explain">
+            <button class="primary-button" id="submit-button" type="submit"><span>✦</span> Gerar com inteligência artificial <span class="button-arrow">→</span></button>
+          </form>
+          <div class="privacy-hint">✧ Respostas geradas por IA podem conter erros. Confira informações importantes.</div>
+        </div>
+
+        <section class="result-card" id="result-card">
+          <div class="result-empty" id="empty-state">
+            <div class="empty-art"><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><span class="brain">✧</span></div>
+            <h2>Sua aprendizagem começa aqui.</h2>
+            <p>Escolha um assunto e como deseja aprender. Sua resposta aparecerá neste espaço.</p>
+            <div class="suggestions-title">IDEIAS PARA COMEÇAR</div>
+            <div class="suggestions">
+              <button type="button" data-suggestion="Lógica de programação">Lógica de programação <span>↗</span></button>
+              <button type="button" data-suggestion="Inteligência Artificial">Inteligência Artificial <span>↗</span></button>
+              <button type="button" data-suggestion="Banco de dados">Banco de dados <span>↗</span></button>
+            </div>
+          </div>
+          <div class="result-content hidden" id="result-content">
+            <div class="result-topline"><span class="ai-badge">✦ RESPOSTA DA IA</span><span id="result-time"></span></div>
+            <h2 id="result-title">Sua explicação</h2>
+            <div class="answer-text" id="answer-text"></div>
+            <div class="feedback-box">
+              <div><strong>Vamos verificar seu aprendizado?</strong><p>Você pode responder ao exercício ou pedir uma nova atividade.</p></div>
+              <button type="button" id="new-quiz" class="secondary-button">Criar exercício <span>→</span></button>
+            </div>
+            <div class="evaluate-area hidden" id="evaluate-area">
+              <label for="student-answer">SUA RESPOSTA</label>
+              <textarea id="student-answer" rows="3" maxlength="1200" placeholder="Escreva sua resposta aqui..."></textarea>
+              <button type="button" id="evaluate-button" class="primary-button">Corrigir minha resposta <span>→</span></button>
+            </div>
+          </div>
+          <div class="loading-state hidden" id="loading-state">
+            <div class="loader"></div><h3>Preparando sua aprendizagem...</h3><p>A inteligência artificial está elaborando uma resposta para você.</p>
+          </div>
+          <div class="error-state hidden" id="error-state">
+            <div class="error-icon">!</div><h3>Não foi possível concluir</h3><p id="error-message"></p><button id="retry-button" class="secondary-button">Tentar novamente</button>
+          </div>
+        </section>
+      </section>
+
+      <footer><span>EDUCAIA · PROJETO ACADÊMICO</span><span>Inteligência artificial como apoio à educação</span></footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

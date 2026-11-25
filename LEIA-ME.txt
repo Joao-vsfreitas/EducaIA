@@ -1,0 +1,46 @@
+EDUCAIA - PROTOTIPO COM PROVEDOR ALTERNATIVO (GROQ)
+====================================================
+
+PADRAO DESTA VERSAO
+- Provedor ativo: Groq
+- Modelo: openai/gpt-oss-120b
+- API: https://api.groq.com/openai/v1/chat/completions
+- Compatibilidade: formato de mensagens semelhante ao OpenAI Chat Completions
+
+CONFIGURACAO
+1. Crie uma chave em https://console.groq.com/keys
+2. Copie .env.example para .env
+3. Preencha GROQ_API_KEY com sua chave.
+4. Deixe AI_PROVIDER=groq.
+5. Execute INICIAR-EDUCAIA.bat e acesse http://localhost:3000.
+
+MODELO E COTAS
+A documentação da Groq lista openai/gpt-oss-120b e apresenta limites para o plano gratuito.
+Os limites variam por modelo/conta e podem mudar. Confira a página de Rate Limits e a página Limits da sua conta.
+
+ALTERNAR PARA GEMINI MANUALMENTE
+- Preencha GEMINI_API_KEY no .env.
+- Altere AI_PROVIDER=gemini.
+- Salve e reinicie o servidor.
+A versão não faz failover automático entre provedores: a troca manual evita que o aplicativo tente usar um serviço que você não deseja utilizar.
+
+MELHORIAS
+- Um mesmo conjunto de prompts serve aos dois provedores.
+- Chaves ficam no servidor, nunca no JavaScript do navegador.
+- Retry com espera progressiva para 408, 429 e erros 5xx.
+- Mensagens de erro distinguem autenticação, modelo, cota e indisponibilidade.
+- A avaliação recebe o texto do exercício e as alternativas originais.
+
+LIMITACOES
+- Gratuito não significa ilimitado nem disponibilidade garantida.
+- A Groq pode retornar 429 ao atingir limites e 5xx em incidentes.
+- O estado operacional público não garante que cada chave, modelo ou região tenha acesso.
+- Não inclua dados pessoais ou sensíveis de estudantes.
+- Respostas da IA podem conter erros e precisam de revisão humana.
+
+DOCUMENTACAO
+Groq modelos: https://console.groq.com/docs/models
+Groq rate limits: https://console.groq.com/docs/rate-limits
+Groq OpenAI compatibility: https://console.groq.com/docs/openai
+Groq API keys: https://console.groq.com/keys
+Gemini models: https://ai.google.dev/gemini-api/docs/models
