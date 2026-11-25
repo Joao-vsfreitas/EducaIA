@@ -17,7 +17,7 @@ Protótipo de tutor educacional inteligente desenvolvido em Node.js e integrado 
 
 * **Backend:** Node.js, Express, Dotenv
 * **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
-* **IA:** Google Gemini API (`v1beta` / `gemini-3.8-flash`)
+* **IA:** Google Gemini API (`v1beta` / `gemini-3.8-flash` / `Groq`/)
 
 ---
 
